@@ -16,7 +16,7 @@ function preload() {
   game.load.image('spikes', 'assets/spikes.png');
   game.load.image('acid', 'assets/acid.png');
   game.load.image('cushion', 'assets/cushion.png');
-  game.load.image('play_button','assets/play.png');
+  game.load.spritesheet('button', 'assets/buttons/button_sprite_sheet.png', 1, 99);
 }
 var player;
 var player2;
@@ -38,7 +38,7 @@ var deadly_group;
 var death_count = 0;
 var pink_bear_alive = true;
 var green_bear_alive = true;
-var play_button;
+var button;
 
 function create(){
 
@@ -134,7 +134,8 @@ function create(){
   
   
   //play button
-  button = game.add.button(game.world.centerX, game.world.centerY, 'play_button', actionOnClick, this, 2, 1, 0);
+  play_button = game.add.button(game.world.centerX, game.world.centerY, 'play_button', actionOnClick, this, 2, 1, 0);
+  button.onInputOut.add(out, this);
   
   
   
@@ -234,4 +235,14 @@ function gofull() {
         game.scale.startFullScreen(false);
     }
 
+}
+function actionOnClick () {
+
+    background.visible =! background.visible;
+
+}
+
+function out() {
+    console.log('button out');
+    play_button.destroy();
 }
