@@ -16,6 +16,7 @@ function preload() {
   game.load.image('spikes', 'assets/spikes.png');
   game.load.image('acid', 'assets/acid.png');
   game.load.image('cushion', 'assets/cushion.png');
+  game.load.image('play_button','assets/play.png');
 }
 var player;
 var player2;
@@ -37,6 +38,7 @@ var deadly_group;
 var death_count = 0;
 var pink_bear_alive = true;
 var green_bear_alive = true;
+var play_button;
 
 function create(){
 
@@ -128,7 +130,12 @@ function create(){
   player2.animations.add('dead', [8], 10, true);
   
   //mouse button
-  game.input.onDown.add(gofull, this);
+  //game.input.onDown.add(gofull, this);
+  
+  
+  //play button
+  button = game.add.button(game.world.centerX, game.world.centerY, 'play_button', actionOnClick, this, 2, 1, 0);
+  
   
   
 }
